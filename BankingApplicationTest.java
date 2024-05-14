@@ -40,6 +40,13 @@ public class BankingApplicationTest {
         assertNotNull(bankingApp.checkBalance("1234567890"));
     }
 
+    @Test
+    public void testDepositIntoNonExistingAccount() {
+        bankingApp.deposit("1234567890", 500.0);
+        double balance = bankingApp.checkBalance("1234567890");
+        assertEquals(0.0, balance, 0.01);
+    }
+
     @After
     public void tearDown() {
         // Clean up resources after each test
