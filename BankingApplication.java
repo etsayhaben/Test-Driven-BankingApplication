@@ -8,7 +8,7 @@ public class BankingApplication {
     public BankingApplication() {
         accounts = new HashMap<>();
     }
-
+// the following code works on creating new account.
     public void createAccount(String accountNumber, double initialBalance) {
         if (!accounts.containsKey(accountNumber)) {
             accounts.put(accountNumber, initialBalance);
