@@ -19,9 +19,4 @@ public class BankingApplicationTest {
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(1000.0, balance, 0.01);
     }
-
-    public double checkBalance(String accountNumber) {
-        return bankingApp.getOrDefault(accountNumber, 0.0);
-    }
-
 }
