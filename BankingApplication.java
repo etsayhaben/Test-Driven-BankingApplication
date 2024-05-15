@@ -18,6 +18,15 @@ public class BankingApplication {
         return accounts.getOrDefault(accountNumber, 0.0);
     }
 
+    public void withdraw(String accountNumber, double amount) {
+        if (accounts.containsKey(accountNumber)) {
+            double currentBalance = accounts.get(accountNumber);
+            if (currentBalance >= amount) {
+                accounts.put(accountNumber, currentBalance - amount);
+            }
+        }
+    }
+
     public void deposit(String accountNumber, double amount) {
         if (accounts.containsKey(accountNumber)) {
             double currentBalance = accounts.get(accountNumber);

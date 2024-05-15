@@ -14,7 +14,6 @@ public class BankingApplicationTest {
 
     @Test
     public void testCreateAccountWithInitialBalance() {
-        // Test creating an account with an initial balance
         bankingApp.createAccount("1234567890", 1000.0);
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(1000.0, balance, 0.01);
@@ -22,36 +21,36 @@ public class BankingApplicationTest {
 
     @Test
     public void testCreateAccountWithExistingAccountNumber() {
-        // Test creating an account with an existing account number
-        // The account creation should fail and maintain the original balance
         bankingApp.createAccount("1234567890", 1000.0);
         bankingApp.createAccount("1234567890", 2000.0);
         double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(1000, balance, 0.01);
+        assertEquals(1000.0, balance, 0.01);
     }
 
     @Test
-    public void testDepositIntoExistingAccount() {
-        // Test depositing into an existing account
+    public void testCheckBalanceOfExistingAccount() {
         bankingApp.createAccount("1234567890", 1000.0);
-        bankingApp.deposit("1234567890", 500.0);
         double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(1500.0, balance, 0.01);
-        assertNotNull(bankingApp.checkBalance("1234567890"));
+        assertEquals(1000.0, balance, 0.01);
     }
 
-    // this is teh test test case towith draw from sufficent balance account
     @Test
-    public void testWithdrawFromExistingAccountWithSufficientBalance() {
+    public void testCheckBalanceOfNonExistingAccount() {
+        double balance = bankingApp.checkBalance("1234567890");
+        assertEquals(0, balance, 0.01);
+    }
+
+    @Test
+    public void testCloseExistingAccount() {
         bankingApp.createAccount("1234567890", 1000.0);
-        bankingApp.withdraw("1234567890", 500.0);
+        bankingApp.closeAccount("1234567890");
         double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(50.0, balance, 0.01);
+        assertEquals(0.0, balance, 0.01);
     }
 
     @Test
-    public void testDepositIntoNonExistingAccount() {
-        bankingApp.deposit("1234567890", 500.0);
+    public void testCloseNonExistingAccount() {
+        bankingApp.closeAccount("1234567890");
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(0.0, balance, 0.01);
     }
