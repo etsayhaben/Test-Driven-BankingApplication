@@ -15,7 +15,7 @@ public class BankingApplication {
     }
 
     public double checkBalance(String accountNumber) {
-        return accounts.getOrDefault(accountNumber, 0.0);
+        return accounts.getOrDefault(accountNumber, 0);
     }
 
     public void withdraw(String accountNumber, double amount) {
