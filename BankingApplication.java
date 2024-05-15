@@ -34,6 +34,15 @@ public class BankingApplication {
         }
     }
 
+    public void withdraw(String accountNumber, double amount) {
+        if (accounts.containsKey(accountNumber)) {
+            double currentBalance = accounts.get(accountNumber);
+            if (currentBalance >= amount) {
+                accounts.put(accountNumber, currentBalance - amount);
+            }
+        }
+    }
+
     public void closeAccount(String accountNumber) {
         accounts.remove(accountNumber);
     }
