@@ -1,3 +1,4 @@
+
 // this is the comment session of the code
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +9,8 @@ public class BankingApplication {
     public BankingApplication() {
         accounts = new HashMap<>();
     }
-// the following code works on creating new account.
+
+    // the following code works on creating new account.
     public void createAccount(String accountNumber, double initialBalance) {
         if (!accounts.containsKey(accountNumber)) {
             accounts.put(accountNumber, initialBalance);
@@ -16,7 +18,7 @@ public class BankingApplication {
     }
 
     public double checkBalance(String accountNumber) {
-        return accounts.getOrDefault(accountNumber, 0);
+        return accounts.getOrDefault(accountNumber, 0.0);
     }
 
     public void withdraw(String accountNumber, double amount) {
@@ -32,15 +34,6 @@ public class BankingApplication {
         if (accounts.containsKey(accountNumber)) {
             double currentBalance = accounts.get(accountNumber);
             accounts.put(accountNumber, currentBalance + amount);
-        }
-    }
-
-    public void withdraw(String accountNumber, double amount) {
-        if (accounts.containsKey(accountNumber)) {
-            double currentBalance = accounts.get(accountNumber);
-            if (currentBalance >= amount) {
-                accounts.put(accountNumber, currentBalance - amount);
-            }
         }
     }
 
