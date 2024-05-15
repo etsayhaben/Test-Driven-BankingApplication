@@ -14,6 +14,10 @@ public class BankingApplication {
         }
     }
 
+    public double checkBalance(String accountNumber) {
+        return accounts.getOrDefault(accountNumber, 0.0);
+    }
+
     public static void main(String args[]) {
         new BankingApplication();
     }

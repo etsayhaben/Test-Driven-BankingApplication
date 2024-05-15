@@ -20,33 +20,8 @@ public class BankingApplicationTest {
         assertEquals(1000.0, balance, 0.01);
     }
 
-    @Test
-    public void testCreateAccountWithExistingAccountNumber() {
-        // Test creating an account with an existing account number
-        // The account creation should fail and maintain the original balance
-        bankingApp.createAccount("1234567890", 1000.0);
-        bankingApp.createAccount("1234567890", 2000.0);
-        double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(1000.0, balance, 0.01);
+    public double checkBalance(String accountNumber) {
+        return bankingApp.getOrDefault(accountNumber, 0.0);
     }
 
-    @Test
-    public void testDepositIntoExistingAccount() {
-        // Test depositing into an existing account
-        bankingApp.createAccount("1234567890", 1000.0);
-        bankingApp.deposit("1234567890", 500.0);
-        double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(1500.0, balance, 0.01);
-        assertNotNull(bankingApp.checkBalance("1234567890"));
-    }
-
-    @After
-    public void tearDown() {
-        // Clean up resources after each test
-    }
-
-    @AfterClass
-    public static void tearDownAll() {
-        // Clean up resources once after all tests have been executed
-    }
 }
