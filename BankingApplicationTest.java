@@ -40,7 +40,6 @@ public class BankingApplicationTest {
         assertNotNull(bankingApp.checkBalance("1234567890"));
     }
 
-<<<<<<< HEAD
     // this is teh test test case towith draw from sufficent balance account
     @Test
     public void testWithdrawFromExistingAccountWithSufficientBalance() {
@@ -50,9 +49,6 @@ public class BankingApplicationTest {
         assertEquals(50.0, balance, 0.01);
     }
 
-=======
->>>>>>> 564efcaf70aec1d9ba42999ddad43259be6ac5e1
-    @Test
     public void testDepositIntoNonExistingAccount() {
         bankingApp.deposit("1234567890", 500.0);
         double balance = bankingApp.checkBalance("1234567890");
