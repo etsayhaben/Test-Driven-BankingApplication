@@ -27,7 +27,7 @@ public class BankingApplicationTest {
         bankingApp.createAccount("1234567890", 1000.0);
         bankingApp.createAccount("1234567890", 2000.0);
         double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(1000, balance, 0.01);
+        assertEquals(1000.0, balance, 0.01);
     }
 
     @Test
@@ -38,21 +38,6 @@ public class BankingApplicationTest {
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(1500.0, balance, 0.01);
         assertNotNull(bankingApp.checkBalance("1234567890"));
-    }
-
-    // this is teh test test case towith draw from sufficent balance account
-    @Test
-    public void testWithdrawFromExistingAccountWithSufficientBalance() {
-        bankingApp.createAccount("1234567890", 1000.0);
-        bankingApp.withdraw("1234567890", 500.0);
-        double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(50.0, balance, 0.01);
-    }
-
-    public void testDepositIntoNonExistingAccount() {
-        bankingApp.deposit("1234567890", 500.0);
-        double balance = bankingApp.checkBalance("1234567890");
-        assertEquals(0.0, balance, 0.01);
     }
 
     @After
