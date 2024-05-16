@@ -37,7 +37,7 @@ public class BankingApplicationTest {
 
     @Test
     public void testCheckBalanceNullAccountNumber() {
-        // Test checking the balance of an account with a null account number.
+        // Test checking the balance of an account with a null account number
         assertNull(bankingApp.checkBalance(null));
         fail("Checking the balance of an account with a null account number should throw an exception");
     }
