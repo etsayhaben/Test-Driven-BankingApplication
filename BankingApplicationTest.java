@@ -19,4 +19,10 @@ public class BankingApplicationTest {
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(1000.0, balance, 0.01);
     }
+      @Test
+    public void testCheckBalance() {
+        BankingApplication bankingApp = new BankingApplication();
+        bankingApp.createAccount("1234567890", 1000.0);
+        assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
+    }
 }
