@@ -14,7 +14,7 @@ public class BankingApplication {
             accounts.put(accountNumber, initialBalance);
         }
     }
-//checking balance fixed
+
     public double checkBalance(String accountNumber) {
         return accounts.getOrDefault(accountNumber, 0.0);
     }
