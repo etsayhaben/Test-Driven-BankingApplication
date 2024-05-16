@@ -20,6 +20,14 @@ public class BankingApplicationTest {
         assertEquals(1000.0, balance, 0.01);
     }
 
+    @Test
+    public void testCreateAccountNullAccountNumber() {
+        // Test creating an account with a null account number
+        bankingApp.createAccount(null, 1000.0);
+        assertNull(bankingApp.checkBalance(null));
+        fail("Creating an account with a null account number should throw an exception");
+    }
+
     @Test // test check balance for existing account
     public void testCheckBalance() {
         BankingApplication bankingApp = new BankingApplication();
@@ -29,7 +37,7 @@ public class BankingApplicationTest {
 
     @Test
     public void testCheckBalanceNullAccountNumber() {
-        // Test checking the balance of an account with a null account number
+        // Test checking the balance of an account with a null account numbe
         assertNull(bankingApp.checkBalance(null));
         fail("Checking the balance of an account with a null account number should throw an exception");
     }
