@@ -19,16 +19,18 @@ public class BankingApplicationTest {
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(1000.0, balance, 0.01);
     }
-      @Test
+
+    @Test // test check balance for existing account
     public void testCheckBalance() {
         BankingApplication bankingApp = new BankingApplication();
         bankingApp.createAccount("1234567890", 1000.0);
         assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
     }
-    @Test 
-public void testCheckBalanceNullAccountNumber() {
-    // Test checking the balance of an account with a null account number
-    assertNull(bankingApp.checkBalance(null));
-    fail("Checking the balance of an account with a null account number should throw an exception");
-}
+
+    @Test
+    public void testCheckBalanceNullAccountNumber() {
+        // Test checking the balance of an account with a null account number
+        assertNull(bankingApp.checkBalance(null));
+        fail("Checking the balance of an account with a null account number should throw an exception");
+    }
 }
