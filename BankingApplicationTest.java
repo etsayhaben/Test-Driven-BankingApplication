@@ -58,6 +58,6 @@ public class BankingApplicationTest {
         // Test depositing money into an account with a null account number
         bankingApp.deposit(null, 500.0);
         assertNull(bankingApp.checkBalance(null));
-        fail("Depositing money into an account with a null account number should throw an exception");
+        fail("Depositing money into an account with a not existing account number should throw an exception");
     }
 }
