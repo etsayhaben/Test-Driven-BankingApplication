@@ -78,4 +78,18 @@ public class BankingApplicationTest {
         assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
         fail("Depositing a negative amount into an account should throw an exception");
     }
+
+    @Test
+    public void testWithdraw() {
+
+        String accountNumber = "1234567890";
+        bankingApp.createAccount("1234567890", 1000.0);
+        bankingApp.deposit(accountNumber, 1000.0);
+
+        // Test withdrawing money from the existing account
+        bankingApp.withdraw(accountNumber, 500.0);
+
+        // Check if the balance is correct after withdrawal
+        assertEquals(500.0, bankingApp.checkBalance(accountNumber));
+    }
 }
