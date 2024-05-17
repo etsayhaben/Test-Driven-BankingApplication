@@ -1,7 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.security.auth.login.AccountNotFoundException;
 
 public class BankingApplication {
     private Map<String, Double> accounts;
