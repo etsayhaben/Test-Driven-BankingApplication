@@ -52,4 +52,12 @@ public class BankingApplicationTest {
         assertNull(bankingApp.checkBalance(null));
         fail("Checking the balance of an account with a null account number should throw an exception");
     }
+
+    @Test
+    public void testDepositNullAccountNumber() {
+        // Test depositing money into an account with a null account number
+        bankingApp.deposit(null, 500.0);
+        assertNull(bankingApp.checkBalance(null));
+        fail("Depositing money into an account with a null account number should throw an exception");
+    }
 }
