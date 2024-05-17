@@ -55,8 +55,7 @@ public class BankingApplicationTest {
 
     @Test
     // test deposit postive amount into existing account
-    public void testDepositNegativeAmount() {
-        // Test depositing a negative amount into an account
+    public void testDepositintoExistingAccount() {
         bankingApp.createAccount("1234567890", 0.0);
         bankingApp.deposit("1234567890", 500.0);
         assertEquals(500, bankingApp.checkBalance("1234567890"), 0.01);
