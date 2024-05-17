@@ -147,4 +147,13 @@ public class BankingApplicationTest {
         // Expected exception
     }
 }
+    // Method to close an account
+    public void closeAccount(String accountNumber) {
+        if (accounts.containsKey(accountNumber)) {
+            accounts.remove(accountNumber);
+            System.out.println("Account closed successfully.");
+        } else {
+            System.out.println("Account does not exist.");
+        }
+    }
 }
