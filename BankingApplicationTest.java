@@ -128,4 +128,23 @@ public class BankingApplicationTest {
         assertEquals(500.0, bankingApp.checkBalance("0987654321"), 0.01);
         fail("Transferring money from a null sender account number should throw an exception");
     }
+
+    public void testCloseAccount() {
+    // Create an account
+    bankingApp.createAccount("1234567890", 1000.0);
+
+    // Check the initial balance
+    assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
+
+    // Close the account
+    bankingApp.closeAccount("1234567890");
+
+    // Check that the account is closed
+    try {
+        bankingApp.checkBalance("1234567890");
+        fail("Checking the balance of a closed account should throw an exception");
+    } catch (AccountNotFoundException e) {
+        // Expected exception
+    }
+}
 }
