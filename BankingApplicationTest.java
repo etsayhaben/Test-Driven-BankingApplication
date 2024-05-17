@@ -21,6 +21,17 @@ public class BankingApplicationTest {
     }
 
     @Test
+
+    public void testCreateAccountNegativeInitialBalance() {
+        // Test creating an account with a negative initial balance
+        bankingApp.createAccount("1234567890", -1000.0);
+        assertNotNull(bankingApp.checkBalance("1234567890"));
+        assertEquals(0.0, bankingApp.checkBalance("1234567890"), 0.01);
+        fail("Creating an account with a negative initial balance should throw an exception");
+    }
+
+    @Test
+
     public void testCreateAccountNullAccountNumber() {
         // Test creating an account with a null account number
         bankingApp.createAccount(null, 1000.0);
