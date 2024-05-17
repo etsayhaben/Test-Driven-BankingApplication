@@ -20,6 +20,15 @@ public class BankingApplication {
     }
 
     public double checkBalance(String accountNumber) {
+        try {
+            if (accountNumber.startsWith('-'))
+                ;
+
+        }
+
+        catch (Exception e) {
+            throw new Exception("account number can not be negative");
+        }
         return accounts.getOrDefault(accountNumber, 0.0);
     }
 
