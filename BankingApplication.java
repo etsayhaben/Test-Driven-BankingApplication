@@ -37,5 +37,20 @@ public class BankingApplication {
             System.out.println("Account does not exist.");
         }
     }
+     // Method to withdraw money
+    public void withdraw(String accountNumber, double amount) {
+        if (accounts.containsKey(accountNumber)) {
+            double currentBalance = accounts.get(accountNumber);
+            if (currentBalance >= amount) {
+                currentBalance -= amount;
+                accounts.put(accountNumber, currentBalance);
+                System.out.println("Withdrawal successful.");
+            } else {
+                System.out.println("Insufficient balance.");
+            }
+        } else {
+            System.out.println("Account does not exist.");
+        }
+    }
 
 }
