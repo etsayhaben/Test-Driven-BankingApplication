@@ -19,7 +19,16 @@ public class BankingApplicationTest {
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(1000.0, balance, 0.01);
     }
-
+@Test
+public void testTransferNullReceiverAccountNumber() {
+    // Test transferring money to a null receiver account number
+    bankingApp.createAccount("1234567890", 1000.0);
+    bankingApp.transfer("1234567890", null, 300.0);
+    assertNotNull(bankingApp.checkBalance("1234567890"));
+    assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
+    assertNull(bankingApp.checkBalance(null));
+    fail("Transferring money to a null receiver account number should throw an exception");
+}
     @Test
 
     public void testCreateAccountNegativeInitialBalance() {
