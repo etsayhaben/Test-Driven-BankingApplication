@@ -1,4 +1,3 @@
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,17 +18,24 @@ public class BankingApplication {
         }
     }
 
-    public double checkBalance(String accountNumber) {
-        try {
-            if (accountNumber.startsWith('-'))
-                ;
-
+    public double checkBalance(String accountNumber) throws Exception {
+        if (accounts.containsKey(accountNumber)) {
+            return accounts.get(accountNumber);
+        } else {
+            throw new Exception("Account does not exist.");
         }
+    }
 
-        catch (Exception e) {
-            throw new Exception("account number can not be negative");
+    // Method to deposit money
+    public void deposit(String accountNumber, double amount) {
+        if (accounts.containsKey(accountNumber)) {
+            double currentBalance = accounts.get(accountNumber);
+            currentBalance += amount;
+            accounts.put(accountNumber, currentBalance);
+            System.out.println("Deposit successful.");
+        } else {
+            System.out.println("Account does not exist.");
         }
-        return accounts.getOrDefault(accountNumber, 0.0);
     }
 
 }
