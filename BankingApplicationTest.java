@@ -11,7 +11,7 @@ public class BankingApplicationTest {
     public void setUp() {
         bankingApp = new BankingApplication();
     }
-
+//test create Account with intial balance
     @Test
     public void testCreateAccountWithInitialBalance() throws Exception {
         // Test creating an account with an initial balance
@@ -19,7 +19,7 @@ public class BankingApplicationTest {
         double balance = bankingApp.checkBalance("1234567890");
         assertEquals(1000.0, balance, 0.01);
     }
-
+//test for transfer negative amount
     @Test
     public void testTransferNegativeAmount() throws Exception {
         // Test transferring a negative amount between accounts
@@ -32,7 +32,7 @@ public class BankingApplicationTest {
         assertEquals(500.0, bankingApp.checkBalance("0987654321"), 0.01);
         fail("Transferring a negative amount between accounts should throw an exception");
     }
-
+//test for transfer for null reciever account
     @Test
     public void testTransferNullReceiverAccountNumber() throws Exception {
         // Test transferring money to a null receiver account number
@@ -43,7 +43,7 @@ public class BankingApplicationTest {
         assertNull(bankingApp.checkBalance(null));
         fail("Transferring money to a null receiver account number should throw an exception");
     }
-
+//test for creating account with negative initial Balance
     @Test
 
     public void testCreateAccountNegativeInitialBalance() throws Exception {
@@ -53,7 +53,7 @@ public class BankingApplicationTest {
         assertEquals(0.0, bankingApp.checkBalance("1234567890"), 0.01);
         fail("Creating an account with a negative initial balance should throw an exception");
     }
-
+//test for creating account with null account number
     @Test
 
     public void testCreateAccountNullAccountNumber() throws Exception {
@@ -69,7 +69,7 @@ public class BankingApplicationTest {
         bankingApp.createAccount("1234567890", 1000.0);
         assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
     }
-
+//test for checking balnce of null of null account number
     @Test
     public void testCheckBalanceNullAccountNumber() throws Exception {
         // Test checking the balance of an account with a null account number
@@ -84,7 +84,7 @@ public class BankingApplicationTest {
         bankingApp.deposit("1234567890", 500.0);
         assertEquals(500, bankingApp.checkBalance("1234567890"), 0.01);
     }
-
+//test for depositing null account number
     @Test
     public void testDepositNullAccountNumber() throws Exception {
         // Test depositing money into an account with a null account number
@@ -92,7 +92,7 @@ public class BankingApplicationTest {
         assertNull(bankingApp.checkBalance(null));
         fail("Depositing money into an account with a not existing account number should throw an exception");
     }
-
+//testing depositing negative amount into an account
     @Test
     public void testDepositNegativeAmount() throws Exception {
         // Test depositing a negative amount into an account
@@ -102,7 +102,7 @@ public class BankingApplicationTest {
         assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
         fail("Depositing a negative amount into an account should throw an exception");
     }
-
+//testing to withdraw money 
     @SuppressWarnings("deprecation")
     @Test
     public void testWithdraw() throws Exception {
@@ -117,7 +117,7 @@ public class BankingApplicationTest {
         // Check if the balance is correct after withdrawal
         assertEquals(500.0, bankingApp.checkBalance(accountNumber));
     }
-
+//testing to transfer nullsender account number
     @Test
     public void testTransferNullSenderAccountNumber() throws Exception {
         // Test transferring money from a null sender account number
