@@ -92,4 +92,14 @@ public class BankingApplicationTest {
         // Check if the balance is correct after withdrawal
         assertEquals(500.0, bankingApp.checkBalance(accountNumber));
     }
+    @Test
+public void testTransferNullSenderAccountNumber() {
+    // Test transferring money from a null sender account number
+    bankingApp.createAccount("0987654321", 500.0);
+    bankingApp.transfer(null, "0987654321", 300.0);
+    assertNull(bankingApp.checkBalance(null));
+    assertNotNull(bankingApp.checkBalance("0987654321"));
+    assertEquals(500.0, bankingApp.checkBalance("0987654321"), 0.01);
+    fail("Transferring money from a null sender account number should throw an exception");
+}
 }
