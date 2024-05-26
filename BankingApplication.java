@@ -41,19 +41,18 @@ public class BankingApplication {
     }
 
     // Method to withdraw money
-    public void withdraw(String accountNumber, double amount) {
+    public boolean withdraw(String accountNumber, double amount) {
         if (accounts.containsKey(accountNumber)) {
             double currentBalance = accounts.get(accountNumber);
             if (currentBalance >= amount) {
                 currentBalance -= amount;
                 accounts.put(accountNumber, currentBalance);
-                System.out.println("Withdrawal successful.");
-            } else {
-                System.out.println("Insufficient balance.");
-            }
-        } else {
-            System.out.println("Account does not exist.");
-        }
+                return true;
+            } else
+                return false;
+        } else
+            return false;
+
     }
 
     // method to transfer from one account to another account
