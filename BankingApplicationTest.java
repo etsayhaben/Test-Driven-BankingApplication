@@ -79,6 +79,7 @@ public class BankingApplicationTest {
     }
 
     @Test
+    //this is for testing non existing account
     public void testCloseAccount_AccountDoesNotExist() {
         assertFalse(bankingApp.closeAccount("1234567890"));
         // Verifies that attempting to close a non-existent account returns false.
