@@ -12,7 +12,9 @@ Java Development Kit (JDK) 8 or later
 JUnit 4 or later
 Usage
 Run the BankingApplicationTest class using an IDE like IntelliJ IDEA or Eclipse, or from the command line.
-
+javac -cp .;lib/* BankingApplication.java BankingApplicationTest.java 
+java -cp .;lib/* org.junit.runner.JUnitCore BankingApplicationTest
+to compile
 Test Cases
 testCreateAccountWithInitialBalance: Verify account creation with initial balance.
 testTransferNegativeAmount: Verify IllegalArgumentException for negative transfer.
