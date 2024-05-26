@@ -69,6 +69,15 @@ public class BankingApplicationTest {
 
     }
 
+    @Test
+    public void testCloseAccount_AccountExists() {
+        boolean result = bankingApp.createAccount("1234567890", 1000.0);
+        assertTrue(result);
+        assertTrue(bankingApp.closeAccount("1234567890"));
+        assertNull(bankingApp.accounts.get("1234567890"));
+        // Verifies that an existing account can be closed successfully.
+    }
+   
     // test for creating account with null account number
     @Test
 
