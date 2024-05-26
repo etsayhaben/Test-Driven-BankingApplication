@@ -1,7 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class BankingApplication {
     private Map<String, Double> accounts;
 
@@ -13,29 +12,31 @@ public class BankingApplication {
         new BankingApplication();
     }
 
-    public void createAccount(String accountNumber, double initialBalance) {
-        if (!accounts.containsKey(accountNumber)) {
+    public boolean createAccount(String accountNumber, double initialBalance) {
+        if (!accounts.containsKey(accountNumber) && initialBalance > 0) {
             accounts.put(accountNumber, initialBalance);
-        }
+            return true;
+        } else
+            return false;
     }
 
-    public double checkBalance(String accountNumber) throws Exception {
-        if (accounts.containsKey(accountNumber)) {
+    public double checkBalance(String accountNumber) {
+        if (accounts.containsKey(accountNumber))
             return accounts.get(accountNumber);
-        } else {
-            throw new Exception("Account does not exist.");
-        }
+        else
+            return -1.0;
+
     }
 
     // Method to deposit money
-    public void deposit(String accountNumber, double amount) {
-        if (accounts.containsKey(accountNumber)) {
+    public boolean deposit(String accountNumber, double amount) {
+        if (accounts.containsKey(accountNumber) && amount >= 0) {
             double currentBalance = accounts.get(accountNumber);
             currentBalance += amount;
             accounts.put(accountNumber, currentBalance);
-            System.out.println("Deposit successful.");
+            return true;
         } else {
-            System.out.println("Account does not exist.");
+            return false;
         }
     }
 
@@ -56,20 +57,23 @@ public class BankingApplication {
     }
 
     // method to transfer from one account to another account
-    public void transfer(String senderAccountNumber, String receiverAccountNumber, double amount) throws Exception {
+    public void transfer(String senderAccountNumber, String receiverAccountNumber, double amount) {
         if (senderAccountNumber == null) {
-            throw new NullPointerException("Sender's account number cannot be null");
+            System.out.print("sender account can not be null");
+            return;
         }
         if (receiverAccountNumber == null) {
-            throw new NullPointerException("Receiver's account number cannot be null");
+            System.out.print("reciver account can not be null");
+            return;
         }
         if (amount <= 0) {
-            throw new IllegalArgumentException("Transfer amount must be greater than zero");
+            System.out.print("amount can not be negative");
+            return;
         }
 
         double senderBalance = checkBalance(senderAccountNumber);
         if (senderBalance < amount) {
-            throw new Exception("Insufficient balance in sender's account");
+            System.out.print("insufficent balance");
         }
 
         // Subtract the amount from the sender's account
@@ -81,13 +85,24 @@ public class BankingApplication {
 
     }
 
-    private void updateBalance(String accountNumber, double newBalance) throws Exception {
+    private void updateBalance(String accountNumber, double newBalance) {
         // Assuming accounts is a Map that stores account numbers as keys and their
         // balances as values
         if (accounts.containsKey(accountNumber)) {
             accounts.put(accountNumber, newBalance);
         } else {
-            throw new Exception("Account not found");
+            System.out.print("account can not found");
+            return;
+        }
+    }
+
+    // Method to close an account
+    public void closeAccount(String accountNumber) {
+        if (accounts.containsKey(accountNumber)) {
+            accounts.remove(accountNumber);
+            System.out.println("Account closed successfully.");
+        } else {
+            System.out.println("Account does not exist.");
         }
     }
 
