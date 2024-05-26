@@ -79,16 +79,17 @@ public class BankingApplicationTest {
     }
 
     @Test
-    //this is for testing non existing account
     public void testCloseAccount_AccountDoesNotExist() {
         assertFalse(bankingApp.closeAccount("1234567890"));
         // Verifies that attempting to close a non-existent account returns false.
     }
+
     @Test
-public void testCloseAccount_NullAccountNumber() {
-    assertFalse(bankingApp.closeAccount(null));
-    // Verifies that attempting to close an account with a null account number returns false.
-}
+    public void testCloseAccount_NullAccountNumber() {
+        assertFalse(bankingApp.closeAccount(null));
+        // Verifies that attempting to close an account with a null account number
+        // returns false.
+    }
 
     // test for creating account with null account number
     @Test
@@ -131,19 +132,16 @@ public void testCloseAccount_NullAccountNumber() {
     }
 
     // testing to withdraw money
-    @SuppressWarnings("deprecation")
     @Test
     public void testWithdraw() throws Exception {
 
         String accountNumber = "1234567890";
-        bankingApp.createAccount("1234567890", 1000.0);
-        bankingApp.deposit(accountNumber, 1000.0);
+        boolean result = bankingApp.createAccount("1234567890", 1000.0);
+        assertTrue(result);
+        assertTrue(bankingApp.withdraw(accountNumber, 500.0));
 
-        // Test withdrawing money from the existing account
-        bankingApp.withdraw(accountNumber, 500.0);
-
-        // Check if the balance is correct after withdrawal
-        assertEquals(1500.0, bankingApp.checkBalance(accountNumber), 0);
+        // test for withdrawing money
+        assertEquals(500.0, bankingApp.checkBalance(accountNumber), 0);
     }
 
 }
