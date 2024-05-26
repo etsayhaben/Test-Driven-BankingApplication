@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BankingApplication {
-    private Map<String, Double> accounts;
+    Map<String, Double> accounts;
 
     public BankingApplication() {
         accounts = new HashMap<>();
@@ -93,16 +93,6 @@ public class BankingApplication {
         } else {
             System.out.print("account can not found");
             return;
-        }
-    }
-
-    // Method to close an account
-    public void closeAccount(String accountNumber) {
-        if (accounts.containsKey(accountNumber)) {
-            accounts.remove(accountNumber);
-            System.out.println("Account closed successfully.");
-        } else {
-            System.out.println("Account does not exist.");
         }
     }
 
