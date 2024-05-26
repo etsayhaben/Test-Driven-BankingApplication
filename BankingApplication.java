@@ -91,7 +91,7 @@ public class BankingApplication {
         if (accounts.containsKey(accountNumber)) {
             accounts.put(accountNumber, newBalance);
         } else {
-            System.out.print("account can not found");
+            System.out.print("account can not foun");
             return;
         }
     }
