@@ -1,15 +1,39 @@
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
+
 import static org.junit.Assert.*;
 
 public class BankingApplicationTest {
     private BankingApplication bankingApp;
+    private static int passedTests = 0;
+    private static int failedTests = 0;
+    @Rule
+    public TestWatcher testWatcher = new TestWatcher() {
+        @Override
+        protected void succeeded(Description description) {
+            passedTests++;
+        }
+
+        @Override
+        protected void failed(Throwable e, Description description) {
+            failedTests++;
+        }
+    };
 
     @Before
     public void setUp() {
         bankingApp = new BankingApplication();
+    }
+
+    @AfterClass
+    public static void afterAllTests() {
+        System.out.println("Number of passed tests: " + passedTests);
+        System.out.println("Number of failed tests: " + failedTests);
     }
 
     // test create Account with intial balance
