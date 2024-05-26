@@ -26,7 +26,7 @@ public class BankingApplicationTest {
         bankingApp.createAccount("1234567890", 1000.0);
         bankingApp.createAccount("0987654321", 500.0);
         bankingApp.transfer("1234567890", "0987654321", -300.0);
-        assertNotNull(bankingApp.checkBalance("1234567890"));
+        
         assertEquals(1000.0, bankingApp.checkBalance("1234567890"), 0.01);
         assertNotNull(bankingApp.checkBalance("0987654321"));
         assertEquals(500.0, bankingApp.checkBalance("0987654321"), 0.01);
