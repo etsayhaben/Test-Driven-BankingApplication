@@ -91,8 +91,17 @@ public class BankingApplication {
         if (accounts.containsKey(accountNumber)) {
             accounts.put(accountNumber, newBalance);
         } else {
-            System.out.print("account can not foun");
+            System.out.print("account can not found");
             return;
+        }
+    }
+
+    public boolean closeAccount(String accountNumber) {
+        if (accounts.containsKey(accountNumber)) {
+            accounts.remove(accountNumber);
+            return true;
+        } else {
+            return false;
         }
     }
 
